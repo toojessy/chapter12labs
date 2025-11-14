@@ -45,11 +45,11 @@ public class BoohbahMessageDecryptor {
             // Try all shifts
             for (int shift = 0; shift < 26; shift++) {
                 String attempt = decrypt(encryptedMessage, shift);
-                System.out.println("Shift " + shift + ": " + attempt);
+                // System.out.println("Shift " + shift + ": " + attempt);
             }
 
             // TODO: set this once you manually find the correct shift
-            int correctShift = 0;  // <-- replace with correct value
+            int correctShift = 3;  // <-- replace with correct value
 
             // Write decrypted output
             try (FileWriter writer = new FileWriter(outputFile)) {
