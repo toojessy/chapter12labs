@@ -42,10 +42,11 @@ public class BoohbahMessageDecryptor {
             // Read encrypted message
             String encryptedMessage = reader.readLine();
 
+
             // Try all shifts
             for (int shift = 0; shift < 26; shift++) {
                 String attempt = decrypt(encryptedMessage, shift);
-                // System.out.println("Shift " + shift + ": " + attempt);
+                //System.out.println("Shift " + shift + ": " + attempt);
             }
 
             // TODO: set this once you manually find the correct shift
@@ -55,14 +56,23 @@ public class BoohbahMessageDecryptor {
             try (FileWriter writer = new FileWriter(outputFile)) {
                 String decryptedMessage = decrypt(encryptedMessage, correctShift);
                 writer.write(decryptedMessage);
+
+                System.out.println("=== BOOHBAH INTELLIGENCE REPORT ===");
+                System.out.println("Encrypted message: " + encryptedMessage);
+                System.out.println("Decrypted message: " + decryptedMessage);
+                System.out.println("Decrypted message saved to: decrypted_message.txt");
+                System.out.println("STATUS: THREAT IDENTIFIED!");
             }
 
             System.out.println("Decryption complete. Output written to " + outputFile);
+
+
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException("Input file not found: " + inputFile, e);
         } catch (IOException e) {
             throw new RuntimeException("I/O error occurred", e);
         }
+
     }
 }
